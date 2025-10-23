@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Gioco Impiccato</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Gioco dell'Impiccato</h2>
+
+<label>
+    Scegli livello:
+    <select id="livello">
+        <option value="facile">Facile</option>
+        <option value="medio">Medio</option>
+        <option value="difficile">Difficile</option>
+    </select>
+</label>
+<button onclick="iniziaGioco()">Inizia</button>
+
+<div id="gioco" style="display:none;">
+    <p id="parolaNascosta"></p>
+    <input type="text" id="lettera" maxlength="1" placeholder="Lettera">
+    <button onclick="provaLettera()">Prova</button>
+    <p>Tentativi rimasti: <span id="tentativi">6</span></p>
+    <p id="messaggio"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
