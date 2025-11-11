@@ -1,26 +1,45 @@
 import java.util.Random;
-
 public class Atleta implements Runnable {
-    int numero;
-    String nome;
-    double tempo = 0;
-    double metri = 0;
-    final double LUNGHEZZAGARA = 50;
+    private final int numero;
+    private final String nome;
+    private double metri = 0;
+    private boolean ritirato = false;
+    private boolean concluso = false;
+    public static double lunghezzaPercorso;
+    private final Giudice giudice;
+    private final Random random = new Random();
 
-    public Atleta(int pNumero, String pNome) {
-        numero = pNumero;
-        nome = pNome;
+    public Atleta(String nome, int numero, Giudice giudice) {
+        this.numero = numero;
+        this.nome = nome;
+        this.giudice = giudice;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     @Override
     public void run() {
-        Random metriPercorsi = new Random();
-        while(metri <= LUNGHEZZAGARA) {
-            metri += metriPercorsi.nextDouble(10);
-            System.out.println(nome + " Metri Percorsi: " + metri);
-            try { Thread.currentThread().sleep(1000); }
-            catch (InterruptedException e) { System.err.println("Errore sleep"); }
+        while (!ritirato && !concluso) {
+            double velocita = random.nextDouble() * 10;
+            metri += velocita;
+            System.out.printf("%s metri percorsi: %.2f\n", nome, metri);
+            if (metri >= lunghezzaPercorso) {
+                concluso = true;
+                giudice.registraArrivo(this);
+                break;
+            }
+            if (random.nextInt(100) < 4) { //possibilita di ritiro
+                ritirato = true;
+                giudice.registraRitiro(this);
+                break;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.err.println("Errore sleep");
+            }
         }
-        System.out.println(nome + " è al Traguardo");
     }
 }
