@@ -5,7 +5,6 @@ public class Atleta implements Runnable {
     private double metri = 0;
     private boolean ritirato = false;
     private boolean concluso = false;
-    public static double lunghezzaPercorso;
     private final Giudice giudice;
     private final Random random = new Random();
 
@@ -25,7 +24,7 @@ public class Atleta implements Runnable {
             double velocita = random.nextDouble() * 10;
             metri += velocita;
             System.out.printf("%s metri percorsi: %.2f\n", nome, metri);
-            if (metri >= lunghezzaPercorso) {
+            if (metri >= giudice.lunghezzaPercorso) {
                 concluso = true;
                 giudice.registraArrivo(this);
                 break;
