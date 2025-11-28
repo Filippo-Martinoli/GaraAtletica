@@ -29,7 +29,6 @@ public class GestoreFile {
         }
     }
 
-    // Scrive la classifica finale sul file in modo semplice e sincronizzato
     public synchronized void scriviClassifica(List<Atleta> classifica, int arrivati) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
 
