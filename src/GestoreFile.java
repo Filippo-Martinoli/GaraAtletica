@@ -3,7 +3,7 @@ import java.util.List;
 
 public class GestoreFile {
 
-    private final String fileName = "classifica.txt";
+    private final String file = "classifica.txt";
 
     // Legge l'ultima classifica salvata (se esiste)
     public synchronized void leggiClassificaPrecedente() {
