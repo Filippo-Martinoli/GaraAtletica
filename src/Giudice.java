@@ -8,12 +8,14 @@ public class Giudice {
     private final List<Atleta> classifica = new ArrayList<>();
     private final int atletiTotali;
     private int arrivati = 0;
+    private final GestoreFile gestoreFile = new GestoreFile();
 
     public Giudice(int numeroAtleti) {
         this.atletiTotali = numeroAtleti;
     }
 
     public void dichiaraInizio() {
+        gestoreFile.leggiClassificaPrecedente();
         System.out.println("La gara è iniziata.");
     }
 
@@ -48,6 +50,7 @@ public class Giudice {
 
         stampaClassifica();
         verificaPodio();
+        salvaClassificaSuFile();
     }
 
     public void stampaClassifica() {
@@ -67,4 +70,8 @@ public class Giudice {
             System.out.println((i + 1) + "° posto: " + classifica.get(i).getNome());
         }
     }
+    private void salvaClassificaSuFile() { 
+gestoreFile.scriviClassifica(classifica, arrivati);
+}
+}
 }
