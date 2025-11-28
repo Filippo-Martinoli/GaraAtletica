@@ -74,4 +74,3 @@ public class Giudice {
 gestoreFile.scriviClassifica(classifica, arrivati);
 }
 }
-}
