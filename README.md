@@ -1,0 +1,6 @@
+L’idea del progetto è che ogni atleta corra in modo indipendente, proprio come succede in una gara reale e per ottenere questo comportamento ho utilizzato i thread, ogni atleta è un thread separato che procede autonomamente.
+Il funzionamento è molto semplice, quando il programma parte, l’utente sceglie quanti atleti parteciperanno e la lunghezza del percorso. Per ogni atleta vengono poi inseriti il nome e il numero.
+A questo punto la gara inizia: ogni atleta avanza di una distanza casuale ogni secondo e ha anche una piccola probabilità di ritirarsi. Questo rende ogni gara diversa dalle altre e il risultato finale non è mai prevedibile.
+La classe centrale è il Giudice, che si occupa di registrare gli arrivi, i ritiri e di stabilire automaticamente quando tutti gli atleti hanno terminato la gara. Alla fine mostra la classifica completa, il podio e salva tutto su un file di testo.
+La classe GestoreFile serve proprio a gestire questo file, all’avvio legge la classifica precedente, se esiste e al termine salva quella nuova.
+Infine c’è la classe GaraAtletica che gestisce l’interazione con l’utente e avvia effettivamente i thread che rappresentano gli atleti.
