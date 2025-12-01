@@ -1,11 +1,21 @@
 import java.io.*;
 import java.util.List;
 
+/**
+ * Classe per gestire la lettura e scrittura della classifica su file
+ * Permette di salvare la classifica finale della gara e leggere
+ * l'ultima classifica salvata.
+ */
 public class GestoreFile {
 
-    private final String file = "classifica.txt";
+    /** Nome del file su cui salvare la classifica */
+    private final String fileName = "classifica.txt";
 
-    // Legge l'ultima classifica salvata (se esiste)
+    /**
+     * Legge l'ultima classifica salvata (se esiste) e la stampa a video
+     * Il metodo è sincronizzato per evitare problemi di concorrenza
+     * se più thread tentano di accedere al file
+     */
     public synchronized void leggiClassificaPrecedente() {
         File file = new File(fileName);
 
@@ -29,6 +39,13 @@ public class GestoreFile {
         }
     }
 
+    /**
+     * Scrive la classifica finale della gara sul file
+     * Gli atleti che non hanno concluso la gara vengono segnati come ritirati
+     * Il metodo è sincronizzato per evitare conflitti di accesso al file
+     * @param classifica lista degli atleti in ordine di arrivo
+     * @param arrivati   numero di atleti che hanno completato la gara
+     */
     public synchronized void scriviClassifica(List<Atleta> classifica, int arrivati) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
 
@@ -46,19 +63,10 @@ public class GestoreFile {
                 writer.println(riga);
             }
 
-        } catch (IOException e) {
-            System.err.println("Impossibile salvare la classifica: " + e.getMessage());
-        }
-    }
-} catch (IOException e) {
-            System.err.println("Errore nella scrittura della classifica: " + e.getMessage());
-        }
-    }
-}
             System.out.println("Classifica salvata correttamente su file.");
+
         } catch (IOException e) {
             System.err.println("Errore nella scrittura della classifica: " + e.getMessage());
         }
     }
 }
-
