@@ -1,6 +1,30 @@
-L’idea del progetto è che ogni atleta corra in modo indipendente, proprio come succede in una gara reale e per ottenere questo comportamento ho utilizzato i thread, ogni atleta è un thread separato che procede autonomamente.
-Il funzionamento è molto semplice, quando il programma parte, l’utente sceglie quanti atleti parteciperanno e la lunghezza del percorso. Per ogni atleta vengono poi inseriti il nome e il numero.
-A questo punto la gara inizia: ogni atleta avanza di una distanza casuale ogni secondo e ha anche una piccola probabilità di ritirarsi. Questo rende ogni gara diversa dalle altre e il risultato finale non è mai prevedibile.
-La classe centrale è il Giudice, che si occupa di registrare gli arrivi, i ritiri e di stabilire automaticamente quando tutti gli atleti hanno terminato la gara. Alla fine mostra la classifica completa, il podio e salva tutto su un file di testo.
-La classe GestoreFile serve proprio a gestire questo file, all’avvio legge la classifica precedente, se esiste e al termine salva quella nuova.
-Infine c’è la classe GaraAtletica che gestisce l’interazione con l’utente e avvia effettivamente i thread che rappresentano gli atleti. Per creare la classe GestoreFile e salvare la classifica finale in un file separato ho preso spunto dal codice del prof. Amendola utilizzato per un altro progetto. Questo progetto è stato un progetto scolastico svolto all'itts nelle ore di tpsit.
+Descrizione del progetto
+L’idea del progetto è simulare una gara di atletica in cui ogni atleta corre in modo indipendente, proprio come nella realtà.
+Per ottenere questo comportamento sono stati utilizzati i thread: ogni atleta è infatti un thread separato che avanza autonomamente.
+Funzionamento generale
+All’avvio del programma, l’utente sceglie:
+il numero di atleti partecipanti,
+la lunghezza del percorso.
+Per ogni atleta vengono inseriti:
+il nome,
+il numero identificativo.
+La gara inizia e:
+ogni atleta avanza di una distanza casuale ogni secondo,
+esiste una piccola probabilità che un atleta si ritiri,
+ogni gara ha quindi un risultato diverso e imprevedibile.
+Ruolo delle classi
+Giudice
+Registra gli arrivi degli atleti.
+Gestisce i ritiri.
+Stabilisce quando la gara è conclusa.
+Mostra la classifica finale e il podio.
+Salva il risultato su un file di testo.
+GestoreFile
+All’avvio legge la classifica precedente (se presente).
+Al termine salva la nuova classifica.
+Per la sua implementazione è stato preso spunto da un codice fornito dal prof. Amendola per un altro progetto.
+GaraAtletica
+Gestisce l’interazione con l’utente.
+Crea gli atleti e avvia i loro thread.
+Contesto scolastico
+Questo progetto è stato realizzato come attività scolastica nelle ore di TPSIT presso l’ITTS A. Volta di Perugia.
