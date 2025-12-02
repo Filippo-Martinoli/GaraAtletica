@@ -47,9 +47,9 @@ public class GestoreFile {
      * @param arrivati   numero di atleti che hanno completato la gara
      */
     public synchronized void scriviClassifica(List<Atleta> classifica, int arrivati) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
+        try (FileWriter writer = new FileWriter(fileName)) {
 
-            writer.println("RESOCONTO FINALE DELLA GARA:");
+            writer.write("RESOCONTO CLASSIFICA DELLA GARA:");
 
             for (int i = 0; i < classifica.size(); i++) {
                 Atleta atleta = classifica.get(i);
@@ -60,7 +60,8 @@ public class GestoreFile {
                     riga += " (ritirato)";
                 }
 
-                writer.println(riga);
+                writer.write( "\n" + riga + "\n");
+
             }
 
             System.out.println("Classifica salvata correttamente su file.");
